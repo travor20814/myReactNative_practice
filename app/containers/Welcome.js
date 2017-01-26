@@ -9,12 +9,14 @@ import {
 	View,
 	Text,
 	TouchableOpacity,
+	KeyboardAvoidingView,
 } from 'react-native';
 
 const styles = {
 	wrapper: {
 		flex: 1,
 		alignItems: 'center',
+		justifyContent: 'center',
 		backgroundColor: '#ffffff',
 	},
 };
@@ -31,15 +33,18 @@ class Welcome extends Component {
 
 		return (
 			<View style={styles.wrapper}>
-				<Text>Welcome Page</Text>
-				<Text>Welcome to Navigation! {userName}</Text>
-				<TextInput
-					onChangeText={age => this.props.changeMyAge(age) }
-					placeholder={'Enter your age:'}
-					style={{ height: 40, width: 200 }} />
-				<TouchableOpacity onPress={() => this.backward()}>
-					<Text style={{ color: '#55ACEE' }}>Save my age</Text>
-				</TouchableOpacity>
+				<KeyboardAvoidingView style={styles.wrapper} behavior={'padding'}>
+					<Text>Welcome Page</Text>
+					<Text>Welcome to Navigation! {userName}</Text>
+					<TextInput
+						onChangeText={age => this.props.changeMyAge(age) }
+						keyboardType="numeric"
+						placeholder={'Enter your age:'}
+						style={{ height: 40, width: 200 }} />
+					<TouchableOpacity onPress={() => this.backward()}>
+						<Text style={{ color: '#55ACEE' }}>Save my age</Text>
+					</TouchableOpacity>
+				</KeyboardAvoidingView>
 			</View>
 		);
 	}
